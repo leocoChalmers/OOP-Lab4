@@ -1,4 +1,3 @@
-package lab2;
 import java.util.ArrayList;
 
 public class Workshop<T extends Car> implements Loadable<T> {

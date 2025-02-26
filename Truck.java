@@ -1,9 +1,7 @@
-package lab2;
-
 import java.awt.*;
 
 abstract class Truck extends Vehicle{
-    protected int bedAngle = 0;
+    private int bedAngle = 0;
 
     public Truck(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){
         super(modelName,nrDoors,color,enginePower, startingPosition);

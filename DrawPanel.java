@@ -1,14 +1,8 @@
-import lab2.*;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 
 // This panel represents the animated part of the view with the car images.

@@ -1,6 +1,3 @@
-package lab2;
-
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Saab95Workshop extends Workshop {
