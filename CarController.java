@@ -33,7 +33,7 @@ public class CarController {
         cc.vehicles.add(new Volvo240(new double[]{0,100}));
         cc.vehicles.add(new Scania(new double[]{0,200}));
 
-        cc.workshops.add(new Saab95Workshop(5));
+        cc.workshops.add(new Saab95Workshop(5, new double[]{200, 300}));
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
@@ -55,19 +55,7 @@ public class CarController {
                         y < 0 || y > frame.drawPanel.getHeight()
                         || x < 0 || x > frame.drawPanel.getWidth();
 
-                if (isOutside){
-                    vehicle.turnLeft();
-                    vehicle.turnLeft();
-                    while (isOutside) {
-                        vehicle.move();
-                        x = (int) Math.round(vehicle.getPosition()[0]);
-                        y = (int) Math.round(vehicle.getPosition()[1]);
-                        isOutside = y < 0 || y > frame.drawPanel.getHeight()
-                                        || x < 0 || x > frame.drawPanel.getWidth();
-                    }
-                    vehicle.stopEngine();
-                    vehicle.startEngine();
-                }
+
                 frame.drawPanel.moveit(x,y,vehicle);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -75,8 +63,8 @@ public class CarController {
                 if(vehicle instanceof Saab95){
                     Saab95 saab95 = (Saab95) vehicle;
                     for(Workshop workshop : workshops){
-                        if(Math.abs(frame.drawPanel.saab95Point.x - frame.drawPanel.saab95WorkshopPoint.x) < 10
-                                && Math.abs(frame.drawPanel.saab95Point.y - frame.drawPanel.saab95WorkshopPoint.y) < 10){
+                        if(Math.abs(vehicle.getPosition()[0] - workshop.getPosition()[0]) < 10
+                                && Math.abs(vehicle.getPosition()[1] - workshop.getPosition()[1]) < 10){
                             if(workshop.getAvailableSpots() > 0){
                                 workshop.loadVehicle(saab95);
                                 saab95.stopEngine();

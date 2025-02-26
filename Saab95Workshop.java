@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Saab95Workshop extends Workshop {
     protected ArrayList<Saab95> vehicleSpots = new ArrayList<>();
 
-    public Saab95Workshop(int spotsAvailable) {
-        super(spotsAvailable);
+    public Saab95Workshop(int spotsAvailable, double[] position) {
+        super(spotsAvailable, position);
 
     }
 

@@ -3,13 +3,16 @@ import java.util.ArrayList;
 public class Workshop<T extends Car> implements Loadable<T> {
     private ArrayList<T> vehicleSpots = new ArrayList<>();
     protected int spotsAvailable;
+    private double[] position = {0,0};
 
-    public Workshop(int spotsAvailable){
+    public Workshop(int spotsAvailable, double[] position){
         this.spotsAvailable = spotsAvailable;
+        this.position = position;
     }
     public int getAvailableSpots(){
         return spotsAvailable - vehicleSpots.size();
     }
+    public double[] getPosition(){return position;}
 
     @Override
     public void loadVehicle(T vehicle){
@@ -22,7 +25,6 @@ public class Workshop<T extends Car> implements Loadable<T> {
         if (!vehicleSpots.isEmpty()) {
             System.out.println(vehicleSpots.getFirst().modelName);
             vehicleSpots.removeFirst();
-
         }
         else{
             System.out.println("No car in the workshop");
