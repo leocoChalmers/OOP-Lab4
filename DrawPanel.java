@@ -29,18 +29,21 @@ public class DrawPanel extends JPanel{
 
     // TODO: Make this general for all cars
     void moveit(int x, int y, Vehicle vehicle) {
-        System.out.println(y);
-        if(vehicle instanceof Saab95){
-            saab95Point.x = x;
-            saab95Point.y = y;
-        }
-        else if (vehicle instanceof Volvo240){
-            volvoPoint.x = x;
-            volvoPoint.y = y;
-        }
-        else if(vehicle instanceof Scania){
-            scaniaPoint.x = x;
-            scaniaPoint.y = y;
+        switch (vehicle) {
+            case Saab95 saab95 -> {
+                saab95Point.x = x;
+                saab95Point.y = y;
+            }
+            case Volvo240 volvo240 -> {
+                volvoPoint.x = x;
+                volvoPoint.y = y;
+            }
+            case Scania scania -> {
+                scaniaPoint.x = x;
+                scaniaPoint.y = y;
+            }
+            default -> {
+            }
         }
         repaint();
     }
