@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public class Workshop<T extends Car> implements Loadable<T> {
+public class Workshop<T extends IsCar> implements Loadable<T> {
     private ArrayList<T> vehicleSpots = new ArrayList<>();
     protected int spotsAvailable;
-    private double[] position = {0,0};
+    private double[] position;
 
     public Workshop(int spotsAvailable, double[] position){
         this.spotsAvailable = spotsAvailable;
@@ -23,7 +23,7 @@ public class Workshop<T extends Car> implements Loadable<T> {
     }
     public void unloadVehicle(){
         if (!vehicleSpots.isEmpty()) {
-            System.out.println(vehicleSpots.getFirst().modelName);
+            System.out.println(vehicleSpots.getFirst().getModelName());
             vehicleSpots.removeFirst();
         }
         else{
@@ -31,7 +31,7 @@ public class Workshop<T extends Car> implements Loadable<T> {
         }
     }
     public boolean isInWorkshop(Vehicle _vehicle){
-        for(Vehicle vehicle: vehicleSpots){
+        for(T vehicle: vehicleSpots){
             if (vehicle.getClass().equals(_vehicle.getClass()))
                 return true;
         }

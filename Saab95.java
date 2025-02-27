@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends Car
+public class Saab95 extends Vehicle implements IsCar
 {
     boolean turboOn;
 
@@ -25,4 +25,8 @@ public class Saab95 extends Car
         return enginePower * 0.01 * turbo;
     }
 
+    @Override
+    public void setPosition(double[] newPosition) {
+        position = newPosition;
+    }
 }

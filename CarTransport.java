@@ -1,9 +1,9 @@
 import java.awt.*;
 
-public class CarTransport<T extends Car> extends Vehicle implements Loadable<T>, IsTruck
+public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T>, IsTruck
 {
     private int bedAngle;
-    Vehicle[] vehicleSpots = new Vehicle[5];
+    IsCar[] vehicleSpots = new IsCar[5];
     public CarTransport(double[] startingPosition) {
         super("CarTransport", 2, Color.blue, 630, startingPosition);
     }
@@ -23,8 +23,8 @@ public class CarTransport<T extends Car> extends Vehicle implements Loadable<T>,
 
     @Override
     public void loadVehicle(T vehicle) {
-        if (bedAngle == 70 && vehicle.modelName != "CarTransport") {
-            if (Math.abs(vehicle.position[0]-position[0])<=10 && Math.abs(vehicle.position[1]-position[1])<=10){
+        if (bedAngle == 70 && vehicle.getModelName() != "CarTransport") {
+            if (Math.abs(vehicle.getPosition()[0]-position[0])<=10 && Math.abs(vehicle.getPosition()[1]-position[1])<=10){
                 for (int i = 0; i < vehicleSpots.length; i++){
                     if (vehicleSpots[i] == null){
                         vehicleSpots[i] = vehicle;
@@ -40,8 +40,8 @@ public class CarTransport<T extends Car> extends Vehicle implements Loadable<T>,
         if (bedAngle == 70){
             for (int i = vehicleSpots.length-1; i >= 0; i--){
                 if (vehicleSpots[i] != null){
-                    vehicleSpots[i].position[0] = position[0]-10-i;
-                    vehicleSpots[i].position[1] = position[1]-10-i;
+                    vehicleSpots[i].getPosition()[0] = position[0]-10-i;
+                    vehicleSpots[i].getPosition()[1] = position[1]-10-i;
                     vehicleSpots[i] = null;
                     return;
                 }
@@ -66,8 +66,8 @@ public class CarTransport<T extends Car> extends Vehicle implements Loadable<T>,
                 position[0] -= currentSpeed;
                 break;
         }
-        for (Vehicle vehicleSpot : vehicleSpots) {
-            vehicleSpot.position = position;
+        for (IsCar carSpot : vehicleSpots) {
+            carSpot.setPosition(position);
             return;
         }
     }
