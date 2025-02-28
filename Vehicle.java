@@ -1,7 +1,8 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 
-public abstract class Vehicle implements Movable {
+public abstract class Vehicle implements Movable{
     protected int nrDoors = 0; // Number of doors on the car
     protected double enginePower = 0.0; // Engine power of the car
     protected double currentSpeed = 0.0; // The current speed of the car
@@ -20,6 +21,22 @@ public abstract class Vehicle implements Movable {
         stopEngine();
     }
 
+    private ArrayList<VehicleObserver> observers = new ArrayList();
+
+    public void addObserver(VehicleObserver observer){
+        observers.add(observer);
+    }
+
+    public void removeObserver(VehicleObserver observer){
+        observers.remove(observer);
+    }
+
+    public void notifyObservers(){
+        for (VehicleObserver observer : observers){
+            observer.updatedVehicle(this);
+        }
+    }
+
     public void move(){
         switch (direction){
             case 0:
@@ -35,6 +52,7 @@ public abstract class Vehicle implements Movable {
                 position[0] -= currentSpeed;
                 break;
         }
+        notifyObservers();
     }
     private int changeDirection(int dir, int i){return (4 + dir + i) % 4;}
     public void turnLeft(){

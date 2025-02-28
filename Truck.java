@@ -1,6 +1,6 @@
 import java.awt.*;
 
-abstract class Truck extends Vehicle{
+abstract class Truck extends Vehicle {
     private int bedAngle = 0;
 
     public Truck(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){

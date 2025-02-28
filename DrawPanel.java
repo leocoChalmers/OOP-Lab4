@@ -3,14 +3,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.util.HashMap;
 
 
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
-    //HashMap<Vehicle, Point> vehiclePositions = new HashMap<>();
-    //HashMap<Workshop, Point> workshopPoints = new HashMap<>();
-    //HashMap<Vehicle, BufferedImage> imagevehicle = new HashMap<>();
+
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
@@ -28,24 +27,8 @@ public class DrawPanel extends JPanel{
 
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y, Vehicle vehicle) {
-        switch (vehicle) {
-            case Saab95 saab95 -> {
-                saab95Point.x = x;
-                saab95Point.y = y;
-            }
-            case Volvo240 volvo240 -> {
-                volvoPoint.x = x;
-                volvoPoint.y = y;
-            }
-            case Scania scania -> {
-                scaniaPoint.x = x;
-                scaniaPoint.y = y;
-            }
-            default -> {
-            }
-        }
-        repaint();
+    void moveit(){
+        
     }
 
     // Initializes the panel and reads the images

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 * modifying the model state and the updating the view.
  */
 
-public class CarController {
+public class CarController implements CarControllerController {
     VehicleControl vehicleControl = new VehicleControl();
     WorkshopControl workshopControl = new WorkshopControl();
 
@@ -40,34 +40,44 @@ public class CarController {
     }
 
     // Calls the gas method for each car once
-    void gas(int amount) {
+    @Override
+    public void gas(int amount) {
         vehicleControl.gas(amount);
     }
-    void brake(int amount) {
+    @Override
+    public void brake(int amount) {
         vehicleControl.brake(amount);
     }
-    void turboOn(){
+    @Override
+    public void turboOn(){
         vehicleControl.turboOn();
     }
-    void turboOff(){
+    @Override
+    public void turboOff(){
         vehicleControl.turboOff();
     }
-    void liftBed(){
+    @Override
+    public void liftBed(){
         vehicleControl.liftBed();
     }
-    void lowerBed(){
+    @Override
+    public void lowerBed(){
         vehicleControl.lowerBed();
     }
-    void turnRight(){
+    @Override
+    public void turnRight(){
         vehicleControl.turnRight();
     }
-    void turnLeft(){
+    @Override
+    public void turnLeft(){
         vehicleControl.turnLeft();
     }
-    void start() {
+    @Override
+    public void start() {
         vehicleControl.start(workshopControl);
     }
-    void stop(){
+    @Override
+    public void stop(){
         vehicleControl.stop();
     }
 }

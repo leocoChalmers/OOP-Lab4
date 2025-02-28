@@ -1,8 +1,9 @@
 Göra IsCar (interface) och IsTruck (Interface)
-Dela upp CarController till CollisionControl, ControlVehicle, controlWorkshop KLAR!!!!!!!
+KLAR!!!!!!!!!!Dela upp CarController till CollisionControl, ControlVehicle, controlWorkshop
 Skapa ett Observer Pattern (kopplat till workshop)
 Dela upp DrawPanel (?)
-Göra ett till interface till som CarView implementerar för att få bort dubbelpil mellan carview och controller
+KLAR!!!!!! tu madre Göra ett till interface till som CarView implementerar för att få bort dubbelpil mellan carview och controller
+observer pattern för moveit
 
 
 /*
