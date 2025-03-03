@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class VehicleControl {
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
-
+    VehicleFactory vehicleFactory = new VehicleFactory();
     public VehicleControl() {
-        vehicles.add(new Saab95(new double[]{0, 0}));
-        vehicles.add(new Volvo240(new double[]{0, 100}));
-        vehicles.add(new Scania(new double[]{0, 200}));
+        vehicles.add(vehicleFactory.getVehicle("Saab95",0,0));
+        vehicles.add(vehicleFactory.getVehicle("Volvo240",0,100));
+        vehicles.add(vehicleFactory.getVehicle("Scania",0,200));
     }
 
     public void moveVehicles(CarView frame) {

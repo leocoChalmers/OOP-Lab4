@@ -94,4 +94,11 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
             throw new IllegalArgumentException("bedAngle is not 0");
         }
     }
+    @Override
+    public void startEngine(){
+        if (bedAngle ==0){
+            currentSpeed = 0.1;
+            engineOn = true;
+        }
+    }
 }

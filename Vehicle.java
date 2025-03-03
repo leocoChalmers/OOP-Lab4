@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 
 public abstract class Vehicle implements Movable{
-    protected int nrDoors = 0; // Number of doors on the car
-    protected double enginePower = 0.0; // Engine power of the car
+    protected int nrDoors; // Number of doors on the car
+    protected double enginePower; // Engine power of the car
     protected double currentSpeed = 0.0; // The current speed of the car
-    protected Color color = null; // Color of the car
-    protected double[] position = {0,0}; //X, Y positioning
+    protected Color color; // Color of the car
+    protected double[] position; //X, Y positioning
     protected int direction = 0; //0 = North, 1 = East, 2 = South, 3 = West
-    private String modelName;
     protected boolean engineOn = false;
+    private String modelName;
 
     public Vehicle(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){
         this.modelName = modelName;

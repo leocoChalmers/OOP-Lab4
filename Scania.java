@@ -20,7 +20,7 @@ public class Scania extends Vehicle implements IsTruck
 
     @Override
     public void gas(double amount) {
-        if (getBedAngle() == 0) {
+        if (bedAngle == 0) {
             if (amount <= 1 && amount > 0)
                 incrementSpeed(amount);
             else
@@ -28,6 +28,13 @@ public class Scania extends Vehicle implements IsTruck
         }
         else{
                 throw new IllegalArgumentException("bedAngle is not 0");
+        }
+    }
+    @Override
+    public void startEngine(){
+        if(bedAngle == 0){
+        currentSpeed = 0.1;
+        engineOn = true;
         }
     }
 }
