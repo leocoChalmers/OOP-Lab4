@@ -4,13 +4,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.util.HashMap;
+import java.util.Map;
 
 
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
 
-
+    Map<String,BufferedImage> imageMap = new HashMap<>();
+    
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
     // To keep track of a single car's position
@@ -25,10 +27,11 @@ public class DrawPanel extends JPanel{
     BufferedImage saab95WorkshopImage;
     protected Point saab95WorkshopPoint = new Point (200, 300);
 
-
+    MoveGraphics moveGraphics;
     // TODO: Make this general for all cars
-    void moveit(){
-        
+    void moveit(int x, int y, Vehicle vehicle){
+        System.out.println("Hek");
+        moveGraphics.moveit(x,y,vehicle);
     }
 
     // Initializes the panel and reads the images
@@ -54,6 +57,9 @@ public class DrawPanel extends JPanel{
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
 
+            imageMap.put("Volvo240",volvoImage);
+            imageMap.put("Saab95",saab95Image);
+            imageMap.put("Scania",scaniaImage);
         } catch (IOException ex)
         {
            ex.printStackTrace();
@@ -66,9 +72,14 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        moveGraphics.getVehiclePositions().forEach((vehicle, position)->{
+          imageMap.forEach((key,image)->{
+             g.drawImage(imageMap.get(vehicle.getModelName()),position.x,position.y,null);
+          });
+        });
+        /*g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(saab95WorkshopImage, saab95WorkshopPoint.x, saab95WorkshopPoint.y, 100,50, null);
         g.drawImage(saab95Image, saab95Point.x, saab95Point.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
+        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);*/
     }
 }

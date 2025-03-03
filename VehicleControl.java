@@ -18,7 +18,7 @@ public class VehicleControl {
             if (isOutside(x, y, frame)) {
                 turnAround(vehicle);
             }
-            frame.drawPanel.moveit(x,y vehicle);
+            frame.drawPanel.moveit(x,y,vehicle);
             frame.drawPanel.repaint();
         }
     }

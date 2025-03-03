@@ -9,7 +9,7 @@ public abstract class Vehicle implements Movable{
     protected Color color = null; // Color of the car
     protected double[] position = {0,0}; //X, Y positioning
     protected int direction = 0; //0 = North, 1 = East, 2 = South, 3 = West
-    protected String modelName;
+    private String modelName;
     protected boolean engineOn = false;
 
     public Vehicle(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){
