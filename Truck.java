@@ -7,7 +7,7 @@ abstract class Truck extends Vehicle {
         super(modelName,nrDoors,color,enginePower, startingPosition);
     }
     protected void changeBedAngle(int amount){
-        if (currentSpeed == 0.0){
+        if (getCurrentSpeed() == 0.0){
             if (0 <= bedAngle + amount && bedAngle + amount <= 70)
                 bedAngle += amount;
             else

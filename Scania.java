@@ -21,20 +21,16 @@ public class Scania extends Vehicle implements IsTruck
     @Override
     public void gas(double amount) {
         if (bedAngle == 0) {
-            if (amount <= 1 && amount > 0)
-                incrementSpeed(amount);
-            else
-                throw new IllegalArgumentException("Too much gas");
+            super.gas(amount);
         }
         else{
-                throw new IllegalArgumentException("bedAngle is not 0");
+            throw new IllegalArgumentException("bedAngle is not 0");
         }
     }
     @Override
     public void startEngine(){
         if(bedAngle == 0){
-        currentSpeed = 0.1;
-        engineOn = true;
+            super.startEngine();
         }
     }
 }

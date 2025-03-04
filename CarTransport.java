@@ -10,13 +10,13 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
 
     @Override
     public void raiseBedAngle(){
-        if (bedAngle == 0 && currentSpeed == 0.0){
+        if (bedAngle == 0 && getCurrentSpeed() == 0.0){
             bedAngle = 70;
         }
     }
     @Override
     public void lowerBedAngle(){
-        if (bedAngle == 70 && currentSpeed == 0.0){
+        if (bedAngle == 70 && getCurrentSpeed() == 0.0){
             bedAngle = 0;
         }
     }
@@ -52,20 +52,7 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
 
     @Override
     public void move(){
-        switch (direction){
-            case 0:
-                position[1] += currentSpeed;
-                break;
-            case 1:
-                position[0] += currentSpeed;
-                break;
-            case 2:
-                position[1] -= currentSpeed;
-                break;
-            case 3:
-                position[0] -= currentSpeed;
-                break;
-        }
+        super.move();
         for (IsCar carSpot : vehicleSpots) {
             carSpot.setPosition(position);
             return;
@@ -85,10 +72,7 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
     @Override
     public void gas(double amount){
         if (getBedAngle() == 0) {
-            if (amount <= 1 && amount > 0)
-                incrementSpeed(amount);
-            else
-                throw new IllegalArgumentException("Too much gas");
+            super.gas(amount);
         }
         else {
             throw new IllegalArgumentException("bedAngle is not 0");
@@ -97,8 +81,7 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
     @Override
     public void startEngine(){
         if (bedAngle ==0){
-            currentSpeed = 0.1;
-            engineOn = true;
+            super.startEngine();
         }
     }
 }

@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class WorkshopControl {
     private ArrayList<Workshop> workshops = new ArrayList<>();
-
+    WorkshopFactory workshopFactory = new WorkshopFactory();
     public WorkshopControl() {
-        workshops.add(new Saab95Workshop(5, new double[]{200, 300}));
+        workshops.add(workshopFactory.getWorkshop("Saab95",5,200,300));
     }
 
     public void handleVehicles(VehicleControl vehicleControl) {
@@ -12,8 +12,10 @@ public class WorkshopControl {
             for (Vehicle vehicle : vehicleControl.getVehicles()) {
                 if (isNearWorkshop(vehicle, workshop)){
                     if (workshop.getAvailableSpots() > 0) {
-                        workshop.loadVehicle(IsCar.class.cast(vehicle));
-                        vehicle.stopEngine();
+                        if(vehicle instanceof IsCar) {
+                            workshop.loadVehicle((IsCar) vehicle);
+                            vehicle.stopEngine();
+                        }
                     }
                 }
             }
