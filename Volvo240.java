@@ -10,7 +10,7 @@ public class Volvo240 extends Vehicle implements IsCar
     }
     @Override
     public double speedFactor(){
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
     @Override
