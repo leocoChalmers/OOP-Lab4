@@ -4,9 +4,17 @@ public class VehicleControl {
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     VehicleFactory vehicleFactory = new VehicleFactory();
     public VehicleControl() {
-        vehicles.add(vehicleFactory.getVehicle("Saab95",0,0));
-        vehicles.add(vehicleFactory.getVehicle("Volvo240",0,100));
-        vehicles.add(vehicleFactory.getVehicle("Scania",0,200));
+        addVehicle("Saab95",0,0 );
+        addVehicle("Volvo240",0, 100);
+        addVehicle("Scania",0, 200);
+    }
+    public void addVehicle(String model, double startingX, double startingY){
+        if(vehicles.size() < 10)
+            vehicles.add(vehicleFactory.getVehicle(model,startingX,startingY));
+    }
+    public void removeVehicle(){
+        if(!vehicles.isEmpty())
+            vehicles.removeFirst();
     }
 
     public void moveVehicles(CarView frame) {

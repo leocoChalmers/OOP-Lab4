@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +35,20 @@ public class DrawPanel extends JPanel{
         moveGraphics.moveit(x,y,vehicle);
     }
 
+    public void addVehicleImage(Vehicle vehicle){
+        if(vehicle instanceof Saab95){
+            imageMap.put("Saab95",saab95Image);
+        }
+        else if(vehicle instanceof Volvo240){
+            imageMap.put("Volvo240",volvoImage);
+        }
+        else if(vehicle instanceof Scania){
+            imageMap.put("Scania",scaniaImage);
+        }
+
+
+    }
+
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);
@@ -54,7 +69,6 @@ public class DrawPanel extends JPanel{
             //volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
             saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             saab95WorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab.png"));
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
 
             imageMap.put("Volvo240",volvoImage);
@@ -72,11 +86,19 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        moveGraphics.getVehiclePositions().forEach((vehicle, position)->{
+        VehicleControl vehicleControl = new VehicleControl();
+
+        vehicleControl.getVehicles().forEach(vehicle -> {
+           g.drawImage(imageMap.get(vehicle.getModelName()),moveGraphics.getVehiclePositions().get(vehicle).x,
+                   moveGraphics.getVehiclePositions().get(vehicle).y,100,50,null);
+        });
+
+       /* moveGraphics.getVehiclePositions().forEach((vehicle, position)->{
           imageMap.forEach((key,image)->{
              g.drawImage(imageMap.get(vehicle.getModelName()),position.x,position.y,null);
           });
-        });
+        });*/
+        
         g.drawImage(saab95WorkshopImage, saab95WorkshopPoint.x, saab95WorkshopPoint.y, 100,50, null);
 
         /*g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters

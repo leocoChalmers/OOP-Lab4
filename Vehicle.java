@@ -32,12 +32,11 @@ public abstract class Vehicle implements Movable{
         observers.remove(observer);
     }
 
-    public void notifyObservers(){
-        for (VehicleObserver observer : observers){
+    public void notifyObservers() {
+        for (VehicleObserver observer : observers) {
             observer.updatedVehicle(this);
         }
     }
-
     public void move(){
         switch (direction){
             case 0:

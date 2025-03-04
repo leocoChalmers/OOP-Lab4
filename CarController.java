@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -80,4 +79,14 @@ public class CarController implements CarControllerController {
     public void stop(){
         vehicleControl.stop();
     }
+
+    @Override
+    public void addVehicle(String model, double startingX, double startingY){
+        vehicleControl.addVehicle(model, startingX, startingY);
+    }
+    @Override
+    public void removeVehicle(){
+        vehicleControl.removeVehicle();
+    }
+
 }

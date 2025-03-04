@@ -11,6 +11,7 @@ public interface CarControllerController {
     void stop();
 
 
+    void addVehicle(String model, double startingX, double startingY);
 
-
+    void removeVehicle();
 }

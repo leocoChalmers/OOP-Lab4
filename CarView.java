@@ -4,7 +4,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.Random;
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
  * It initializes with being center on the screen and attaching it's controller in it's state.
@@ -29,6 +29,12 @@ public class CarView extends JFrame{
     int gasAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
+    private static final int maximumCars = 10;
+
+    Random rand = new Random();
+    String[] options = {"Saab95", "Volvo240", "Scania", "Random"};
+    JComboBox<String> vehicleOptions = new JComboBox<>(options);
+
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
     JButton turboOnButton = new JButton("Saab Turbo on");
@@ -41,6 +47,8 @@ public class CarView extends JFrame{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
     JButton unloadButton = new JButton("Unload vehicle");
+    JButton addButton = new JButton("Add vehicle");
+    JButton removeButton = new JButton("Remove vehicle");
 
     // Constructor
     public CarView(String framename, CarController cc){
@@ -87,6 +95,10 @@ public class CarView extends JFrame{
         controlPanel.add(turnLeftButton, 6);
         controlPanel.add(turnRightButton, 7);
         controlPanel.add(unloadButton, 8);
+        controlPanel.add(addButton, 9);
+        controlPanel.add(removeButton,10);
+        controlPanel.add(vehicleOptions,11);
+
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -158,6 +170,14 @@ public class CarView extends JFrame{
             public void actionPerformed(ActionEvent e) {
               //  carC.unload();
             }
+        });
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {carC.addVehicle((String)vehicleOptions.getSelectedItem(),rand.nextInt(800),rand.nextInt(800));}
+        });
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {carC.removeVehicle();}
         });
 
         // Make the frame pack all it's components by respecting the sizes if possible.
