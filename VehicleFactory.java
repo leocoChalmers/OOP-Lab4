@@ -1,4 +1,3 @@
-import java.awt.*;
 
 public class VehicleFactory {
     private int id = 0;

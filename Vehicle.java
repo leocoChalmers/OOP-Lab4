@@ -3,12 +3,12 @@ import java.util.ArrayList;
 
 
 public abstract class Vehicle implements Movable{
-    protected double[] position; //X, Y positioning
-    private final int nrDoors; // Number of doors on the car
+    private double[] position;
+    private final int nrDoors;
     private final String modelName;
-    private final double enginePower; // Engine power of the car
-    private double currentSpeed = 0.0; // The current speed of the car
-    private Color color; // Color of the car
+    private final double enginePower;
+    private double currentSpeed = 0.0;
+    private Color color;
     private int direction = 0; //0 = North, 1 = East, 2 = South, 3 = West
     private boolean engineOn = false;
     private final int id;
@@ -22,22 +22,7 @@ public abstract class Vehicle implements Movable{
         this.id = id;
         stopEngine();
     }
-/*
-    private ArrayList<VehicleObserver> observers = new ArrayList();
 
-    public void addObserver(VehicleObserver observer){
-        observers.add(observer);
-    }
-
-    public void removeObserver(VehicleObserver observer){
-        observers.remove(observer);
-    }
-    public void notifyObservers() {
-        for (VehicleObserver observer : observers) {
-            observer.updatedVehicle(this);
-        }
-    }
-*/
     public void move(){
         switch (direction){
             case 0:
@@ -53,7 +38,6 @@ public abstract class Vehicle implements Movable{
                 position[0] -= currentSpeed;
                 break;
         }
-        //notifyObservers();
     }
     private int changeDirection(int dir, int i){return (4 + dir + i) % 4;}
     public void turnLeft(){
@@ -66,6 +50,7 @@ public abstract class Vehicle implements Movable{
     public double[] getPosition(){
         return position;
     }
+    void setPosition(double[] position){this.position = position;}
 
     protected void incrementSpeed(double amount){
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);

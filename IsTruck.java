@@ -17,12 +17,8 @@ public interface IsTruck {
         }
     }
 
-    default void raiseBedAngle() {
-        changeBedAngle(7);  // Math.abs(7) är onödigt då 7 redan är positivt
-    }
-
+    default void raiseBedAngle() {changeBedAngle(7);}
     default void lowerBedAngle() {
         changeBedAngle(-7);
     }
-
 }

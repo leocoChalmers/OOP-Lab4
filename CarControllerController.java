@@ -9,9 +9,6 @@ public interface CarControllerController {
     void turnLeft();
     void start();
     void stop();
-
-
     void addVehicle(String model, double startingX, double startingY);
-
     void removeVehicle();
 }

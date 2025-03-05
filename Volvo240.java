@@ -15,6 +15,6 @@ public class Volvo240 extends Vehicle implements IsCar
 
     @Override
     public void setPosition(double[] newPosition) {
-        position = newPosition;
+        super.setPosition(newPosition);
     }
 }

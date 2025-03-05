@@ -2,11 +2,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
- */
 
 public class CarController implements CarControllerController {
     WorkshopControl workshopControl = new WorkshopControl();
@@ -17,17 +12,11 @@ public class CarController implements CarControllerController {
     CarView frame;
 
     public static void main(String[] args) {
-        // Instance of this class
         CarController cc = new CarController();
-        // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
-        // Start the timer
         cc.timer.start();
     }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             frame.drawPanel.getVehicleControl().moveVehicles(frame);
@@ -36,7 +25,6 @@ public class CarController implements CarControllerController {
         }
     }
 
-    // Calls the gas method for each car once
     @Override
     public void gas(int amount) {
         frame.drawPanel.getVehicleControl().gas(amount);
@@ -77,7 +65,6 @@ public class CarController implements CarControllerController {
     public void stop(){
         frame.drawPanel.getVehicleControl().stop();
     }
-
     @Override
     public void addVehicle(String model, double startingX, double startingY){
         frame.drawPanel.getVehicleControl().addVehicle(model, startingX, startingY);

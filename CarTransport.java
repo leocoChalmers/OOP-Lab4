@@ -24,7 +24,7 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
     @Override
     public void loadVehicle(T vehicle) {
         if (bedAngle == 70 && vehicle.getModelName() != "CarTransport") {
-            if (Math.abs(vehicle.getPosition()[0]-position[0])<=10 && Math.abs(vehicle.getPosition()[1]-position[1])<=10){
+            if (Math.abs(vehicle.getPosition()[0]-getPosition()[0])<=10 && Math.abs(vehicle.getPosition()[1]-getPosition()[1])<=10){
                 for (int i = 0; i < vehicleSpots.length; i++){
                     if (vehicleSpots[i] == null){
                         vehicleSpots[i] = vehicle;
@@ -40,8 +40,8 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
         if (bedAngle == 70){
             for (int i = vehicleSpots.length-1; i >= 0; i--){
                 if (vehicleSpots[i] != null){
-                    vehicleSpots[i].getPosition()[0] = position[0]-10-i;
-                    vehicleSpots[i].getPosition()[1] = position[1]-10-i;
+                    vehicleSpots[i].getPosition()[0] = getPosition()[0]-10-i;
+                    vehicleSpots[i].getPosition()[1] = getPosition()[1]-10-i;
                     vehicleSpots[i] = null;
                     return;
                 }
@@ -54,7 +54,7 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
     public void move(){
         super.move();
         for (IsCar carSpot : vehicleSpots) {
-            carSpot.setPosition(position);
+            carSpot.setPosition(getPosition());
             return;
         }
     }

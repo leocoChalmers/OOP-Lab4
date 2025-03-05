@@ -27,6 +27,6 @@ public class Saab95 extends Vehicle implements IsCar
 
     @Override
     public void setPosition(double[] newPosition) {
-        position = newPosition;
+        super.setPosition(newPosition);
     }
 }

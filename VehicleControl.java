@@ -21,7 +21,6 @@ public class VehicleControl {
     }
 
     public void moveVehicles(CarView frame) {
-        //System.out.println(vehicles);
         for (Vehicle vehicle : vehicles) {
             vehicle.move();
             int x = (int) Math.round(vehicle.getPosition()[0]);
@@ -116,7 +115,6 @@ public class VehicleControl {
         }
     }
     public ArrayList<Vehicle> getVehicles() {
-        //System.out.println(vehicles);
         return vehicles;
     }
 }
