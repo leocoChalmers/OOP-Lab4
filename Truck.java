@@ -1,6 +1,6 @@
 import java.awt.*;
 
-abstract class Truck extends Vehicle {
+/*abstract class Truck {
     private int bedAngle = 0;
 
     public Truck(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){
@@ -36,4 +36,4 @@ abstract class Truck extends Vehicle {
         else
             throw new IllegalArgumentException("bedAngle is not 0");
     }
-}
+}*/

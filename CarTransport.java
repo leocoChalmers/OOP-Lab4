@@ -4,8 +4,8 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
 {
     private int bedAngle;
     IsCar[] vehicleSpots = new IsCar[5];
-    public CarTransport(double[] startingPosition) {
-        super("CarTransport", 2, Color.blue, 630, startingPosition);
+    public CarTransport(double[] startingPosition, int id) {
+        super("CarTransport", 2, Color.blue, 630, startingPosition, id);
     }
 
     @Override

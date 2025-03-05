@@ -29,6 +29,7 @@ public class DrawPanel extends JPanel{
     protected Point saab95WorkshopPoint = new Point (200, 300);
 
     MoveGraphics moveGraphics = new MoveGraphics();
+    private VehicleControl vehicleControl;
 
     // TODO: Make this general for all cars
     void moveit(int x, int y, Vehicle vehicle){
@@ -54,7 +55,7 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.black);
-
+        vehicleControl = new VehicleControl();
         // Print an error message in case file is not found with a try/catch block
 
         try {
@@ -86,18 +87,23 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        VehicleControl vehicleControl = new VehicleControl();
 
-        vehicleControl.getVehicles().forEach(vehicle -> {
-           g.drawImage(imageMap.get(vehicle.getModelName()),moveGraphics.getVehiclePositions().get(vehicle).x,
-                   moveGraphics.getVehiclePositions().get(vehicle).y,100,50,null);
+
+
+        //vehicleControl.getVehicles().forEach(vehicle -> {
+          // g.drawImage(imageMap.get(vehicle.getModelName()),moveGraphics.getVehiclePositions().get(vehicle).x,
+            //       moveGraphics.getVehiclePositions().get(vehicle).y,100,50,null);
+        //});
+
+       moveGraphics.getVehiclePositions().forEach((_vehicle, position)->{
+           System.out.println(vehicleControl.getVehicles());
+           for(Vehicle vehicle: vehicleControl.getVehicles()){
+               //System.out.println(_vehicle.getId());
+               if(vehicle.getId() == _vehicle.getId()){
+                   g.drawImage(imageMap.get(vehicle.getModelName()),position.x,position.y,100,50,null);
+               }
+           }
         });
-
-       /* moveGraphics.getVehiclePositions().forEach((vehicle, position)->{
-          imageMap.forEach((key,image)->{
-             g.drawImage(imageMap.get(vehicle.getModelName()),position.x,position.y,null);
-          });
-        });*/
         
         g.drawImage(saab95WorkshopImage, saab95WorkshopPoint.x, saab95WorkshopPoint.y, 100,50, null);
 

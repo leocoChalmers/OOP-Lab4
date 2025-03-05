@@ -4,8 +4,8 @@ public class Saab95 extends Vehicle implements IsCar
 {
     boolean turboOn;
 
-    public Saab95(double[] startingPosition){
-        super("Saab95", 2, Color.red, 125, startingPosition);
+    public Saab95(double[] startingPosition, int id){
+        super("Saab95", 2, Color.red, 125, startingPosition, id);
 	    turboOn = false;
         stopEngine();
     }

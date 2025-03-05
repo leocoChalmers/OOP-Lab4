@@ -3,8 +3,8 @@ import java.awt.*;
 public class Scania extends Vehicle implements IsTruck
 {
     private int bedAngle;
-    public Scania(double[] startingPosition){
-        super("Scania",2, Color.pink, 770, startingPosition);
+    public Scania(double[] startingPosition, int id){
+        super("Scania",2, Color.pink, 770, startingPosition, id);
         stopEngine();
     }
 

@@ -11,14 +11,15 @@ public abstract class Vehicle implements Movable{
     private Color color; // Color of the car
     private int direction = 0; //0 = North, 1 = East, 2 = South, 3 = West
     private boolean engineOn = false;
+    private final int id;
 
-
-    public Vehicle(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition){
+    public Vehicle(String modelName, int nrDoors, Color color, double enginePower, double[] startingPosition, int id){
         this.modelName = modelName;
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.position = startingPosition;
+        this.id = id;
         stopEngine();
     }
 
@@ -105,6 +106,7 @@ public abstract class Vehicle implements Movable{
     }
 
     public String getModelName(){return modelName;}
+    public int getId(){return id;}
 
     public void gas(double amount){
         if(amount <= 1 && amount>0 && engineOn){

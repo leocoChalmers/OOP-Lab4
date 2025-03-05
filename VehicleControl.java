@@ -7,10 +7,12 @@ public class VehicleControl {
         addVehicle("Saab95",0,0 );
         addVehicle("Volvo240",0, 100);
         addVehicle("Scania",0, 200);
+        System.out.println("Nyskapad");
     }
     public void addVehicle(String model, double startingX, double startingY){
-        if(vehicles.size() < 10)
-            vehicles.add(vehicleFactory.getVehicle(model,startingX,startingY));
+        if(vehicles.size() < 10) {
+            vehicles.add(vehicleFactory.getVehicle(model, startingX, startingY));
+        }
     }
     public void removeVehicle(){
         if(!vehicles.isEmpty())
@@ -18,6 +20,7 @@ public class VehicleControl {
     }
 
     public void moveVehicles(CarView frame) {
+        //System.out.println(vehicles);
         for (Vehicle vehicle : vehicles) {
             vehicle.move();
             int x = (int) Math.round(vehicle.getPosition()[0]);
@@ -112,6 +115,7 @@ public class VehicleControl {
         }
     }
     public ArrayList<Vehicle> getVehicles() {
+        //System.out.println(vehicles);
         return vehicles;
     }
 }
