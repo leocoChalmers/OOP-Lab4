@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
  */
 
 public class CarController implements CarControllerController {
-    VehicleControl vehicleControl = new VehicleControl();
     WorkshopControl workshopControl = new WorkshopControl();
 
     private final int delay = 50;
@@ -22,7 +21,6 @@ public class CarController implements CarControllerController {
         CarController cc = new CarController();
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
-
         // Start the timer
         cc.timer.start();
     }
@@ -32,8 +30,8 @@ public class CarController implements CarControllerController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            vehicleControl.moveVehicles(frame);
-            workshopControl.handleVehicles(vehicleControl);
+            frame.drawPanel.getVehicleControl().moveVehicles(frame);
+            workshopControl.handleVehicles(frame.drawPanel.getVehicleControl());
             frame.drawPanel.repaint();
         }
     }
@@ -41,52 +39,51 @@ public class CarController implements CarControllerController {
     // Calls the gas method for each car once
     @Override
     public void gas(int amount) {
-        vehicleControl.gas(amount);
+        frame.drawPanel.getVehicleControl().gas(amount);
     }
     @Override
     public void brake(int amount) {
-        vehicleControl.brake(amount);
+        frame.drawPanel.getVehicleControl().brake(amount);
     }
     @Override
     public void turboOn(){
-        vehicleControl.turboOn();
+        frame.drawPanel.getVehicleControl().turboOn();
     }
     @Override
     public void turboOff(){
-        vehicleControl.turboOff();
+        frame.drawPanel.getVehicleControl().turboOff();
     }
     @Override
     public void liftBed(){
-        vehicleControl.liftBed();
+        frame.drawPanel.getVehicleControl().liftBed();
     }
     @Override
     public void lowerBed(){
-        vehicleControl.lowerBed();
+        frame.drawPanel.getVehicleControl().lowerBed();
     }
     @Override
     public void turnRight(){
-        vehicleControl.turnRight();
+        frame.drawPanel.getVehicleControl().turnRight();
     }
     @Override
     public void turnLeft(){
-        vehicleControl.turnLeft();
+        frame.drawPanel.getVehicleControl().turnLeft();
     }
     @Override
     public void start() {
-        vehicleControl.start(workshopControl);
+        frame.drawPanel.getVehicleControl().start(workshopControl);
     }
     @Override
     public void stop(){
-        vehicleControl.stop();
+        frame.drawPanel.getVehicleControl().stop();
     }
 
     @Override
     public void addVehicle(String model, double startingX, double startingY){
-        vehicleControl.addVehicle(model, startingX, startingY);
+        frame.drawPanel.getVehicleControl().addVehicle(model, startingX, startingY);
     }
     @Override
     public void removeVehicle(){
-        vehicleControl.removeVehicle();
+        frame.drawPanel.getVehicleControl().removeVehicle();
     }
-
 }

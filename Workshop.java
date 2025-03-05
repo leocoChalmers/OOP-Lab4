@@ -32,7 +32,8 @@ public class Workshop<T extends IsCar> implements Loadable<T> {
     }
     public boolean isInWorkshop(Vehicle _vehicle){
         for(T vehicle: vehicleSpots){
-            if (vehicle.getClass().equals(_vehicle.getClass()))
+            Vehicle v = (Vehicle)vehicle;
+            if (v.getId() == _vehicle.getId())
                 return true;
         }
         return false;

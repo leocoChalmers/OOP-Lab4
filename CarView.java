@@ -19,8 +19,9 @@ public class CarView extends JFrame{
 
     // The controller member
     CarControllerController carC;
-
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    MoveGraphics moveGraphics = new MoveGraphics();
+    VehicleControl vehicleControl = new VehicleControl();
+    DrawPanel drawPanel = new DrawPanel(X, Y-240, vehicleControl, moveGraphics);
 
     JPanel controlPanel = new JPanel();
 
@@ -173,7 +174,7 @@ public class CarView extends JFrame{
         });
         addButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {carC.addVehicle((String)vehicleOptions.getSelectedItem(),rand.nextInt(800),rand.nextInt(800));}
+            public void actionPerformed(ActionEvent e) {carC.addVehicle((String)vehicleOptions.getSelectedItem(),rand.nextInt(600),rand.nextInt(400));}
         });
         removeButton.addActionListener(new ActionListener() {
             @Override

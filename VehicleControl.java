@@ -10,6 +10,7 @@ public class VehicleControl {
         System.out.println("Nyskapad");
     }
     public void addVehicle(String model, double startingX, double startingY){
+        System.out.println(vehicles.size());
         if(vehicles.size() < 10) {
             vehicles.add(vehicleFactory.getVehicle(model, startingX, startingY));
         }

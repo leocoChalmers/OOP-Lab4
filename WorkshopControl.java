@@ -12,10 +12,11 @@ public class WorkshopControl {
             for (Vehicle vehicle : vehicleControl.getVehicles()) {
                 if (isNearWorkshop(vehicle, workshop)){
                     if (workshop.getAvailableSpots() > 0) {
-                        if(vehicle instanceof IsCar) {
+                        try{
                             workshop.loadVehicle((IsCar) vehicle);
                             vehicle.stopEngine();
                         }
+                        catch(Exception e){}
                     }
                 }
             }

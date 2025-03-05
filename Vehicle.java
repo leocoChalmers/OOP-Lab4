@@ -22,7 +22,7 @@ public abstract class Vehicle implements Movable{
         this.id = id;
         stopEngine();
     }
-
+/*
     private ArrayList<VehicleObserver> observers = new ArrayList();
 
     public void addObserver(VehicleObserver observer){
@@ -32,12 +32,12 @@ public abstract class Vehicle implements Movable{
     public void removeObserver(VehicleObserver observer){
         observers.remove(observer);
     }
-
     public void notifyObservers() {
         for (VehicleObserver observer : observers) {
             observer.updatedVehicle(this);
         }
     }
+*/
     public void move(){
         switch (direction){
             case 0:
@@ -53,7 +53,7 @@ public abstract class Vehicle implements Movable{
                 position[0] -= currentSpeed;
                 break;
         }
-        notifyObservers();
+        //notifyObservers();
     }
     private int changeDirection(int dir, int i){return (4 + dir + i) % 4;}
     public void turnLeft(){
@@ -96,8 +96,10 @@ public abstract class Vehicle implements Movable{
     public void setColor(Color clr){color = clr;}
 
     public void startEngine(){
-        currentSpeed = 0.1;
-        engineOn = true;
+        if(!engineOn) {
+            currentSpeed = 0.1;
+            engineOn = true;
+        }
     }
 
     public void stopEngine(){

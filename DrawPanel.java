@@ -28,34 +28,22 @@ public class DrawPanel extends JPanel{
     BufferedImage saab95WorkshopImage;
     protected Point saab95WorkshopPoint = new Point (200, 300);
 
-    MoveGraphics moveGraphics = new MoveGraphics();
     private VehicleControl vehicleControl;
+    private MoveGraphics moveGraphics;
 
     // TODO: Make this general for all cars
     void moveit(int x, int y, Vehicle vehicle){
         moveGraphics.moveit(x,y,vehicle);
     }
 
-    public void addVehicleImage(Vehicle vehicle){
-        if(vehicle instanceof Saab95){
-            imageMap.put("Saab95",saab95Image);
-        }
-        else if(vehicle instanceof Volvo240){
-            imageMap.put("Volvo240",volvoImage);
-        }
-        else if(vehicle instanceof Scania){
-            imageMap.put("Scania",scaniaImage);
-        }
-
-
-    }
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, VehicleControl vehicleControl, MoveGraphics moveGraphics) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(Color.black);
-        vehicleControl = new VehicleControl();
+
+        this.vehicleControl = vehicleControl;
+        this.moveGraphics = moveGraphics;
         // Print an error message in case file is not found with a try/catch block
 
         try {
@@ -96,9 +84,7 @@ public class DrawPanel extends JPanel{
         //});
 
        moveGraphics.getVehiclePositions().forEach((_vehicle, position)->{
-           System.out.println(vehicleControl.getVehicles());
            for(Vehicle vehicle: vehicleControl.getVehicles()){
-               //System.out.println(_vehicle.getId());
                if(vehicle.getId() == _vehicle.getId()){
                    g.drawImage(imageMap.get(vehicle.getModelName()),position.x,position.y,100,50,null);
                }
@@ -107,8 +93,8 @@ public class DrawPanel extends JPanel{
         
         g.drawImage(saab95WorkshopImage, saab95WorkshopPoint.x, saab95WorkshopPoint.y, 100,50, null);
 
-        /*g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(saab95Image, saab95Point.x, saab95Point.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);*/
+    }
+    VehicleControl getVehicleControl(){
+        return vehicleControl;
     }
 }
