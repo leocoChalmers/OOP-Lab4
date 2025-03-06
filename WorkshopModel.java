@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
-public class WorkshopControl {
+public class WorkshopModel {
     private ArrayList<Workshop> workshops = new ArrayList<>();
     WorkshopFactory workshopFactory = new WorkshopFactory();
-    public WorkshopControl() {
+    public WorkshopModel() {
         workshops.add(workshopFactory.getWorkshop("Saab95",5,200,300));
     }
 
-    public void handleVehicles(VehicleControl vehicleControl) {
+    public void handleVehicles(VehicleModel vehicleModel) {
         for (Workshop workshop : workshops) {
-            for (Vehicle vehicle : vehicleControl.getVehicles()) {
+            for (Vehicle vehicle : vehicleModel.getVehicles()) {
                 if (isNearWorkshop(vehicle, workshop)){
                     if (workshop.getAvailableSpots() > 0) {
                         try{

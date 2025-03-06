@@ -1,36 +1,30 @@
 import java.util.ArrayList;
 
-public class VehicleControl {
+public class VehicleModel {
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     VehicleFactory vehicleFactory = new VehicleFactory();
-    public VehicleControl() {
+    public VehicleModel() {
         addVehicle("Saab95",0,0 );
         addVehicle("Volvo240",0, 100);
         addVehicle("Scania",0, 200);
-        System.out.println("Nyskapad");
     }
     public void addVehicle(String model, double startingX, double startingY){
-        System.out.println(vehicles.size());
-        if(vehicles.size() < 10) {
+        if(vehicles.size() < 10)
             vehicles.add(vehicleFactory.getVehicle(model, startingX, startingY));
-        }
     }
     public void removeVehicle(){
         if(!vehicles.isEmpty())
             vehicles.removeFirst();
     }
 
-    public void moveVehicles(CarView frame) {
+    public void moveVehicles(double frameDimensionX, double frameDimensionY) {//Ändra beroende
         for (Vehicle vehicle : vehicles) {
             vehicle.move();
             int x = (int) Math.round(vehicle.getPosition()[0]);
             int y = (int) Math.round(vehicle.getPosition()[1]);
-
-            if (isOutside(x, y, frame)) {
+            if (isOutside(x, y, frameDimensionX, frameDimensionY)) {
                 turnAround(vehicle);
             }
-            frame.drawPanel.moveit(x,y,vehicle);
-            frame.drawPanel.repaint();
         }
     }
 
@@ -39,9 +33,9 @@ public class VehicleControl {
         vehicle.turnLeft();
     }
 
-    private boolean isOutside(int x, int y, CarView frame) {
-        return y < 0 || y > frame.drawPanel.getHeight()-63
-                || x < 0 || x > frame.drawPanel.getWidth()-117;
+    private boolean isOutside(int x, int y, double frameDimensionX, double frameDimensionY) {
+        return y < 0 || y > frameDimensionY-63
+                || x < 0 || x > frameDimensionX-117;
     }
 
     void gas(int amount) {
@@ -101,8 +95,8 @@ public class VehicleControl {
         }
     }
 
-    void start(WorkshopControl workshopControl) {
-        for (Workshop workshop : workshopControl.getWorkshops()) {
+    void start(WorkshopModel workshopModel) {
+        for (Workshop workshop : workshopModel.getWorkshops()) {
             for (Vehicle vehicle : vehicles) {
                 if (!workshop.isInWorkshop(vehicle))
                     vehicle.startEngine();

@@ -35,7 +35,7 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
         }
     }
 
-    @Override
+   /* @Override
     public void unloadVehicle(){
         if (bedAngle == 70){
             for (int i = vehicleSpots.length-1; i >= 0; i--){
@@ -47,7 +47,7 @@ public class CarTransport<T extends IsCar> extends Vehicle implements Loadable<T
                 }
             }
         }
-    }
+    }*/
 
 
     @Override

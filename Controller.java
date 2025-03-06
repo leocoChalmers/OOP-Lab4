@@ -7,14 +7,13 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 
-public class CarView extends JFrame{
+public class Controller extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
-    CarControllerController carC;
+    ModelInterface carC;
     MoveGraphics moveGraphics = new MoveGraphics();
-    VehicleControl vehicleControl = new VehicleControl();
-    DrawPanel drawPanel = new DrawPanel(X, Y-240, vehicleControl, moveGraphics);
+    View view = new View(X, Y-240, moveGraphics);
 
     JPanel controlPanel = new JPanel();
 
@@ -43,7 +42,7 @@ public class CarView extends JFrame{
     JButton addButton = new JButton("Add vehicle");
     JButton removeButton = new JButton("Remove vehicle");
 
-    public CarView(String framename, CarController cc){
+    public Controller(String framename, Model cc){
         this.carC = cc;
         initComponents(framename);
     }
@@ -53,7 +52,7 @@ public class CarView extends JFrame{
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        this.add(drawPanel);
+        this.add(view);
 
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
