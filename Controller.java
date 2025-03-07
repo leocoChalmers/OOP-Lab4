@@ -12,8 +12,7 @@ public class Controller extends JFrame{
     private static final int Y = 800;
 
     ModelInterface carC;
-    MoveGraphics moveGraphics = new MoveGraphics();
-    View view = new View(X, Y-240, moveGraphics);
+    View view = new View(X, Y-240);
 
     JPanel controlPanel = new JPanel();
 

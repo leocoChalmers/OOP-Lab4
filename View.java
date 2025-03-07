@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class View extends JPanel{
-    Model model = new Model();
+    //Model model = new Model();
     Map<String,BufferedImage> imageMap = new HashMap<>();
 
     BufferedImage volvoImage;
@@ -19,7 +19,7 @@ public class View extends JPanel{
     BufferedImage saab95WorkshopImage;
     protected Point saab95WorkshopPoint = new Point (200, 300);
 
-    public View(int x, int y, MoveGraphics moveGraphics) {
+    public View(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
 
@@ -41,7 +41,7 @@ public class View extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-           for(Vehicle vehicle: model.vehicleModel.getVehicles()){
+           for(Vehicle vehicle: model.getVehicleModel().getVehicles()){
                System.out.println(vehicle.getPosition()[1]);
                g.drawImage(imageMap.get(vehicle.getModelName()),(int)vehicle.getPosition()[0],(int)vehicle.getPosition()[1],100,50,null);
            }

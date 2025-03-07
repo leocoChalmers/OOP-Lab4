@@ -23,9 +23,13 @@ public class Model implements ModelInterface {
             vehicleModel.moveVehicles(frame.getWidth(),frame.getHeight());
             workshopModel.handleVehicles(vehicleModel);
             frame.view.repaint();
-
+            System.out.println(vehicleModel.getVehicles());
             //notifyObservers();
         }
+    }
+
+    public VehicleModel getVehicleModel(){
+        return vehicleModel;
     }
 
     @Override
