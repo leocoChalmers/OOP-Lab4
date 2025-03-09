@@ -31,6 +31,7 @@ public class Model implements ModelInterface {
     public VehicleModel getVehicleModel(){
         return vehicleModel;
     }
+    public WorkshopModel getWorkshopModel(){return workshopModel;}
 
     @Override
     public void gas(int amount) {vehicleModel.gas(amount);}

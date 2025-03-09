@@ -11,4 +11,6 @@ public interface ModelInterface {
     void stop();
     void addVehicle(String model, double startingX, double startingY);
     void removeVehicle();
+    VehicleModel getVehicleModel();
+    WorkshopModel getWorkshopModel();
 }

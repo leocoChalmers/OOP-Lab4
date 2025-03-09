@@ -34,7 +34,7 @@ public class VehicleModel {
     }
 
     private boolean isOutside(int x, int y, double frameDimensionX, double frameDimensionY) {
-        return y < 0 || y > frameDimensionY-63
+        return y < 0 || y > frameDimensionY-300
                 || x < 0 || x > frameDimensionX-117;
     }
 

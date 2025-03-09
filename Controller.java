@@ -12,7 +12,7 @@ public class Controller extends JFrame{
     private static final int Y = 800;
 
     ModelInterface carC;
-    View view = new View(X, Y-240);
+    View view;
 
     JPanel controlPanel = new JPanel();
 
@@ -43,6 +43,7 @@ public class Controller extends JFrame{
 
     public Controller(String framename, Model cc){
         this.carC = cc;
+        view = new View(X, Y-240, carC);
         initComponents(framename);
     }
 
