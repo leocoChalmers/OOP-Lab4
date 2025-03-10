@@ -1,3 +1,4 @@
+
 public interface ModelInterface {
     void gas(int amount);
     void brake(int amount);

@@ -7,9 +7,9 @@ public class WorkshopModel {
         workshops.add(workshopFactory.getWorkshop("Saab95",5,200,300));
     }
 
-    public void handleVehicles(VehicleModel vehicleModel) {
+    public void handleVehicles(ArrayList<Vehicle> vehicles) {
         for (Workshop workshop : workshops) {
-            for (Vehicle vehicle : vehicleModel.getVehicles()) {
+            for (Vehicle vehicle : vehicles) {
                 if (isNearWorkshop(vehicle, workshop)){
                     if (workshop.getAvailableSpots() > 0) {
                         try{

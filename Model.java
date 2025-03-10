@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +22,7 @@ public class Model implements ModelInterface {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             vehicleModel.moveVehicles(frame.getWidth(),frame.getHeight());
-            workshopModel.handleVehicles(vehicleModel);
+            workshopModel.handleVehicles(vehicleModel.getVehicles());
             frame.view.repaint();
             System.out.println(vehicleModel.getVehicles());
             //notifyObservers();
@@ -58,7 +59,7 @@ public class Model implements ModelInterface {
         vehicleModel.turnLeft();
     }
     @Override
-    public void start() {vehicleModel.start(workshopModel);}
+    public void start() {vehicleModel.start(workshopModel.getWorkshops());}
     @Override
     public void stop(){vehicleModel.stop();}
     @Override

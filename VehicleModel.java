@@ -95,8 +95,8 @@ public class VehicleModel {
         }
     }
 
-    void start(WorkshopModel workshopModel) {
-        for (Workshop workshop : workshopModel.getWorkshops()) {
+    void start(ArrayList<Workshop> workshops) {
+        for (Workshop workshop : workshops) {
             for (Vehicle vehicle : vehicles) {
                 if (!workshop.isInWorkshop(vehicle))
                     vehicle.startEngine();
