@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class View extends JPanel{
-    //Model model = new Model();
     Map<String,BufferedImage> vehicleImageMap = new HashMap<>();
     Map<String,BufferedImage> workshopImageMap = new HashMap<>();
 
